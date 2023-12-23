@@ -3,6 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tiktoktest/src/core/common/widgets/error.dart';
 import 'package:tiktoktest/src/feature/home/view/pages/home_page.dart';
 import 'package:tiktoktest/src/feature/home/view/widgets/location.dart';
+import 'package:tiktoktest/src/feature/login/view/pages/login_page.dart';
+import 'package:tiktoktest/src/feature/login/view/state/user/current_user_provider.dart';
+import 'package:tiktoktest/src/feature/login/view/state/user/current_user_state.dart';
 import 'package:tiktoktest/src/feature/login/view/widgets/location.dart';
 
 ///common route delegate function for all the features

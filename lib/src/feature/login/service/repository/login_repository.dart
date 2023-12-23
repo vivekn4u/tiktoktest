@@ -11,7 +11,7 @@ abstract class LoginRepository {
   Future<Either<Failures, UserEntity>> getUserFromGoogleApi();
 
   ///get current user data from app
-  Future<Either<Failures, UserEntity>>? getCurrentUser();
+  Future<Either<Failures, UserEntity>> getCurrentUser();
 
   ///check if the user is signed in
   Future<Either<Failures, bool>> isUserSignedIn();

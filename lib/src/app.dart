@@ -2,8 +2,16 @@ import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tiktoktest/src/core/common/logic/route_delegets.dart';
 import 'package:tiktoktest/src/core/common/settings/settings_controller.dart';
+import 'package:tiktoktest/src/core/common/widgets/error.dart';
+import 'package:tiktoktest/src/feature/home/view/pages/home_page.dart';
+import 'package:tiktoktest/src/feature/home/view/widgets/location.dart';
+import 'package:tiktoktest/src/feature/login/view/pages/login_page.dart';
+import 'package:tiktoktest/src/feature/login/view/state/user/current_user_provider.dart';
+import 'package:tiktoktest/src/feature/login/view/state/user/current_user_state.dart';
+import 'package:tiktoktest/src/feature/login/view/widgets/location.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -20,6 +28,51 @@ class MyApp extends StatelessWidget {
     //
     // The ListenableBuilder Widget listens to the SettingsController for changes.
     // Whenever the user updates their settings, the MaterialApp is rebuilt.
+
+    BeamerDelegate TiktokRouteDelegate = BeamerDelegate(
+        initialPath: '/',
+        notFoundPage: const BeamPage(
+            child: ErrorPage(
+          message: 'Page Not found!!',
+        )),
+        //add your route locations here as per your features
+        locationBuilder: BeamerLocationBuilder(beamLocations: [
+          //Home page location
+          HomeLocation(),
+          LoginLocation(),
+        ]),
+        guards: [
+          BeamGuard(
+              pathPatterns: [HomePage.route],
+              // guardNonMatching: true,
+              // Only allow to navigate past `home` if the `userSignedInProvider` is `true`.
+              check: (context, state) {
+                final container =
+                    ProviderScope.containerOf(context, listen: false);
+                return container.read(currentUserProvider)
+                    is CurrentUserCompletedState;
+              },
+
+              // check: (context, state) => container.read(currentUserProvider)
+              //     is CurrentUserCompletedState,
+              beamToNamed: (_, __) => LoginPage.route),
+          BeamGuard(
+              pathPatterns: [LoginPage.route],
+              // guardNonMatching: true,
+              // Only allow to navigate past `home` if the `userSignedInProvider` is `true`.
+
+              check: (context, state) {
+                final container =
+                    ProviderScope.containerOf(context, listen: false);
+                return container.read(currentUserProvider)
+                    is! CurrentUserCompletedState;
+              },
+
+              // check: (context, state) => container.read(currentUserProvider)
+              //     is! CurrentUserCompletedState,
+              beamToNamed: (_, __) => HomePage.route),
+        ]);
+
     return ListenableBuilder(
       listenable: settingsController,
       builder: (BuildContext context, Widget? child) {
@@ -77,7 +130,7 @@ class MyApp extends StatelessWidget {
           //   );
           // },
           routeInformationParser: BeamerParser(),
-          routerDelegate: TikTokRouteDelegate(),
+          routerDelegate: TiktokRouteDelegate,
         );
       },
     );
