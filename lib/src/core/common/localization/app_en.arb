@@ -1,0 +1,6 @@
+{
+  "appTitle": "tiktoktest",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}
