@@ -9,6 +9,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ///TODO: Home page logic
-    return const Text("Home Page");
+    return const Scaffold(body: Center(child: Text("Home Page")));
   }
 }

@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
     // Whenever the user updates their settings, the MaterialApp is rebuilt.
 
     BeamerDelegate TiktokRouteDelegate = BeamerDelegate(
-        initialPath: '/',
+        initialPath: HomePage.route,
         notFoundPage: const BeamPage(
             child: ErrorPage(
           message: 'Page Not found!!',
@@ -131,6 +131,8 @@ class MyApp extends StatelessWidget {
           // },
           routeInformationParser: BeamerParser(),
           routerDelegate: TiktokRouteDelegate,
+          backButtonDispatcher:
+              BeamerBackButtonDispatcher(delegate: TiktokRouteDelegate),
         );
       },
     );

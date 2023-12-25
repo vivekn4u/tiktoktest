@@ -13,12 +13,18 @@ dependencies:
   beamer: ^1.5.6
   dartz: ^0.10.1
   equatable: ^2.0.5
+  firebase_auth: ^4.15.3
+  firebase_core: ^2.24.2
   flutter:
     sdk: flutter
+  flutter_hooks: ^0.20.3
   flutter_localizations:
     sdk: flutter
   flutter_riverpod: ^2.4.9
   get_it: ^7.6.4
+  google_sign_in: ^6.2.1
+  hooks_riverpod: ^2.4.9
+  http: ^1.1.2
   injectable: ^2.3.2
 
 dev_dependencies:

@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "407457762250",
+    "project_id": "tiktok-7f877",
+    "storage_bucket": "tiktok-7f877.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:407457762250:android:7d540f37e436d9ce0d5d33",
+        "android_client_info": {
+          "package_name": "org.vivekn4u.com.tiktoktest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "407457762250-t8759eourdv0e45mju9tja7eeqk6r1nm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.vivekn4u.com.tiktoktest",
+            "certificate_hash": "93852307d5ec61d17866f9c9c3b1b40e6d932b95"
+          }
+        },
+        {
+          "client_id": "407457762250-toiprqoelecv28fnd2hc6hlhhdi16cte.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.vivekn4u.com.tiktoktest",
+            "certificate_hash": "86250571d845575f6dbb6d0f3ccf9510f980ed48"
+          }
+        },
+        {
+          "client_id": "407457762250-d09b7193iaeu8dpdhk40vjh85jhjpjp8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsn55zWzsNAs8JT67VcGpmW4-5vpA2sCE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "407457762250-d09b7193iaeu8dpdhk40vjh85jhjpjp8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "407457762250-jngb4t6ar96qpok7r9eifcc1u7iikfju.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tiktoktest.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

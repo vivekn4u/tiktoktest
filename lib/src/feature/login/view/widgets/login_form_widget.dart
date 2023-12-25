@@ -20,9 +20,9 @@ class LoginFormWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final authState = ref.watch(_loginProvider);
 
-    if (authState is LoginUserCompletedState) {
-      Beamer.of(context).beamToNamed("/");
-    }
+    // if (authState is LoginUserCompletedState) {
+    //   Beamer.of(context).beamToNamed("/");
+    // }
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
