@@ -62,6 +62,8 @@ public class FirebaseJwtUtil {
     }
 
     public String saveVideoFile(MultipartFile file) throws IOException{
+        firebaseApp = FirebaseApp.getInstance();
+        storageClient = StorageClient.getInstance(firebaseApp);
         String fileName = generateFileName(file.getOriginalFilename());
 //        Map<String, String> map = new HashMap<>();
 //        map.put("firebaseStorageDownloadTokens", imageName);
@@ -70,8 +72,7 @@ public class FirebaseJwtUtil {
 //                .setMetadata(map)
 //                .setContentType(file.getContentType())
 //                .build();
-        String blobString = "video/" + fileName;
-        storageClient.bucket().create(blobString, file.getInputStream());
+        storageClient.bucket().create(fileName, file.getInputStream());
         return fileName;
     }
 

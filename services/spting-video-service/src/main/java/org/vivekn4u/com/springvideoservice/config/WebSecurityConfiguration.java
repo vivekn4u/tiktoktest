@@ -1,6 +1,8 @@
 package org.vivekn4u.com.springvideoservice.config;
 
+import jakarta.servlet.MultipartConfigElement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,6 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.util.unit.DataSize;
 import org.vivekn4u.com.springvideoservice.filter.JwtAuthenticationFilter;
 
 @Configuration
@@ -45,6 +48,14 @@ public class WebSecurityConfiguration {
                                   authenticationConfiguration) throws Exception {
 // specify your configuration here
         return authenticationConfiguration.getAuthenticationManager();
+    }
+
+    @Bean
+    public MultipartConfigElement multipartConfigElement()    {
+        MultipartConfigFactory factory = new MultipartConfigFactory();
+        factory.setMaxFileSize(DataSize.parse("10MB"));
+        factory.setMaxRequestSize(DataSize.parse("11MB"));
+        return factory.createMultipartConfig();
     }
 
 }

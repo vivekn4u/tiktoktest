@@ -14,7 +14,7 @@ class ProgressIndicatorWidget extends StatelessWidget {
       height: 24,
       padding: const EdgeInsets.all(2.0),
       child: const CircularProgressIndicator(
-        color: Colors.white,
+        color: Colors.black,
         strokeWidth: 3,
       ),
     );
