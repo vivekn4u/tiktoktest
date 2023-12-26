@@ -1,3 +1,4 @@
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tiktoktest/src/core/common/services/service_locator.dart';
@@ -32,14 +33,22 @@ class VideoListWidget extends ConsumerWidget {
                 leading: const Icon(Icons.video_file),
                 trailing: ElevatedButton.icon(
                   key: Key('Play_$index'),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => PortraitVideoPlayer(
-                                networkUrl: entry.value.toString(),
-                              )),
-                    );
+                  onPressed: () async {
+                    try {
+                      final refer =
+                          FirebaseStorage.instance.ref().child(entry.key);
+                      // .child(entry.value.toString());
+                      final url = await refer.getDownloadURL();
+
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                PortraitVideoPlayer(networkUrl: url),
+                          ));
+                    } catch (e) {
+                      print(e);
+                    }
                     // sl<VideoStateNotifierImpl>()
                     //     .getVideoList("http://localhost:8083/api/video");
                   },
